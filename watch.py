@@ -101,7 +101,7 @@ for ad in identity.list_availability_domains(tenancy).data:
             sys.exit(0)
         else:
             print("Oracle error:", e.status, e.code, e.message)
-tg("Watcher error from Oracle: " + str(e.status) + " " + str(e.code) + " - " + str(e.message)[:400])
+            tg("Watcher error from Oracle: " + str(e.status) + " " + str(e.code) + " - " + str(e.message)[:400])
             sys.exit(1)
 
 # 4. Still full: send a message about once an hour
