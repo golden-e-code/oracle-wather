@@ -1,6 +1,12 @@
 import os, sys, urllib.parse, urllib.request
 from datetime import datetime, timezone
 import oci
+for _k in ("OCI_USER", "OCI_TENANCY", "OCI_FINGERPRINT", "OCI_REGION",
+           "OCI_PRIVATE_KEY", "OCI_SUBNET_ID", "SSH_PUBLIC_KEY",
+           "TELEGRAM_TOKEN", "TELEGRAM_CHAT_ID"):
+    if _k in os.environ:
+        os.environ[_k] = os.environ[_k].strip()
+print("tenancy starts with:", repr(os.environ["OCI_TENANCY"][:19]), "length:", len(os.environ["OCI_TENANCY"]))
 
 NAME = "phone-server"
 SHAPE = "VM.Standard.A1.Flex"
