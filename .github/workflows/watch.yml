@@ -2,7 +2,7 @@ name: watch
 
 on:
   schedule:
-   - cron: "7,17,27,37,47,57 * * * *"
+    - cron: "7,17,27,37,47,57 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -38,6 +38,8 @@ jobs:
           SSH_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
         run: python watch.py
 
       - if: steps.run.outputs.done == 'true'
