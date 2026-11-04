@@ -59,7 +59,9 @@ def sb(method, path, body=None):
             text = r.read().decode()
             return json.loads(text) if text else []
     except Exception as e:
-        print("Supabase problem:", type(e).__name__)
+        code = getattr(e, "code", "")
+        body = e.read().decode()[:300] if hasattr(e, "read") else ""
+        print("Supabase problem:", type(e).name, code, body)
         return None
 
 
