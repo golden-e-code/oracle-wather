@@ -7,6 +7,8 @@ for _k in ("OCI_USER", "OCI_TENANCY", "OCI_FINGERPRINT", "OCI_REGION",
     if _k in os.environ:
         os.environ[_k] = os.environ[_k].strip()
 print("tenancy starts with:", repr(os.environ["OCI_TENANCY"][:19]), "length:", len(os.environ["OCI_TENANCY"]))
+os.environ["SSH_PUBLIC_KEY"] = " ".join(os.environ["SSH_PUBLIC_KEY"].split()[:2])
+print("ssh key type:", os.environ["SSH_PUBLIC_KEY"].split(" ")[0], "length:", len(os.environ["SSH_PUBLIC_KEY"]))
 
 NAME = "phone-server"
 SHAPE = "VM.Standard.A1.Flex"
