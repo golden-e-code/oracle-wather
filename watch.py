@@ -100,7 +100,8 @@ for ad in identity.list_availability_domains(tenancy).data:
             tg("Oracle says too many requests. The watcher will try again later.")
             sys.exit(0)
         else:
-            tg("Watcher error from Oracle: " + str(e.status) + " " + str(e.code))
+            print("Oracle error:", e.status, e.code, e.message)
+tg("Watcher error from Oracle: " + str(e.status) + " " + str(e.code) + " - " + str(e.message)[:400])
             sys.exit(1)
 
 # 4. Still full: send a message about once an hour
