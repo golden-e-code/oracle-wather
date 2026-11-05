@@ -1,9 +1,12 @@
 name: watch
 
 on:
-  schedule:
-    - cron: "7,17,27,37,47,57 * * * *"
   workflow_dispatch:
+    inputs:
+      source:
+        description: "who started this run"
+        required: false
+        default: "manual"
 
 permissions:
   contents: read
@@ -29,6 +32,7 @@ jobs:
       - id: run
         env:
           EVENT_NAME: ${{ github.event_name }}
+          RUN_SOURCE: ${{ github.event.inputs.source }}
           OCI_USER: ${{ secrets.OCI_USER }}
           OCI_TENANCY: ${{ secrets.OCI_TENANCY }}
           OCI_FINGERPRINT: ${{ secrets.OCI_FINGERPRINT }}
