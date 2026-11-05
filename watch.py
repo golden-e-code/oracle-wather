@@ -16,7 +16,7 @@ SHAPE = "VM.Standard.A1.Flex"
 OCPUS = 2
 MEMORY = 12
 BOOT_GB = 100
-CRON_MINUTES = (7, 17, 27, 37, 47, 57)
+CRON_MINUTES = (7, 8, 9, 10, 11, 12)
 
 SB_URL = os.environ.get("SUPABASE_URL", "").rstrip("/")
 SB_KEY = os.environ.get("SUPABASE_SECRET_KEY", "")
