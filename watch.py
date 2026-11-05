@@ -115,8 +115,7 @@ oci.config.validate_config(config)
 tenancy = config["tenancy"]
 compute = oci.core.ComputeClient(config)
 identity = oci.identity.IdentityClient(config)
-manual = os.environ.get("EVENT_NAME") == "workflow_dispatch"
-
+manual = os.environ.get("EVENT_NAME") == "workflow_dispatch" and os.environ.get("RUN_SOURCE", "") != "worker"
 existing = compute.list_instances(tenancy, display_name=NAME).data
 if [i for i in existing if i.lifecycle_state not in ("TERMINATED", "TERMINATING")]:
     log("exists", "computer already exists")
