@@ -13,8 +13,8 @@ os.environ["SSH_PUBLIC_KEY"] = " ".join(os.environ["SSH_PUBLIC_KEY"].split()[:2]
 
 NAME = "phone-server"
 SHAPE = "VM.Standard.A1.Flex"
-OCPUS = 2
-MEMORY = 12
+OCPUS = 1
+MEMORY = 6
 BOOT_GB = 100
 CRON_MINUTES = (5, 10, 15, 20, 25, 30)
 
